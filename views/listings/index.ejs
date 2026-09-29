@@ -1,0 +1,23 @@
+
+<% layout('/layouts/boilerplate') %>
+  <h1>All listings</h1>
+    <!-- <form action="http://localhost:8080/listings/new">
+        <button> Create New Listing</button>
+    </form> -->
+    <div class="row">
+    <%for(listing of listings){ %>
+    <!-- <li><a href="/listings/<%=listing.id%>"><%= listing.title %></a></li> -->
+    <div class="col-12 col-md-6 col-lg-4">
+    <a href="/listings/<%= listing._id %>">
+        <div class="card">
+        <img src="<%= listing.image %>" class="card-img-top" alt="...">
+        <div class="card-body">
+            <h5 class="card-title"><%= listing.title %></h5>
+            <p class="card-price">₹ <%= listing.price %>/night</p>
+        </div>
+        </div>
+    </a>
+    </div>
+<% } %>
+    </div>
+
