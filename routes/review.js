@@ -4,18 +4,9 @@ const Listing = require("../models/listing")
 const ExpressError = require("../ExpressError.js");
 const {reviewSchema}=require('../schema.js');
 const Review= require('../models/review.js')
+const {validateReview,isLoggedin, isReviewAuthor}=require('../middleware.js')
 
-const validateReview = (req, res, next) => {
-  let result = reviewSchema.validate(req.body);
-  console.log(result);
-  if (result.error) {
-    throw new ExpressError(400, result.error);
-  } else {
-    next();
-  }
-};
-
-router.post('/',validateReview, async(req,res)=>{
+router.post('/',isLoggedin,validateReview, async(req,res)=>{
   let formResponse = req.body;
   let {id}= req.params
   console.log(id)
@@ -27,6 +18,8 @@ router.post('/',validateReview, async(req,res)=>{
     //just saved it and redirected.
     console.log(listing)
     listing.reviews.push(review._id)
+    review.author=req.user
+    //curr user who's logged in the author if this review
     await review.save()
     await listing.save()
     req.flash("success", "New Review Created!");
@@ -34,7 +27,7 @@ router.post('/',validateReview, async(req,res)=>{
 
 })
 
-router.delete('/:reviewId', async (req,res)=>{
+router.delete('/:reviewId',isLoggedin,isReviewAuthor, async (req,res)=>{
   let {id,reviewId}=req.params;
   await Listing.updateOne({_id:id},{$pull:{reviews:reviewId}})
   await Review.findByIdAndDelete({_id:reviewId})

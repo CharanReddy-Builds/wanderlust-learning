@@ -1,3 +1,4 @@
+
 .navbar {
   background-color: white !important;
   font-size: 1.3rem;
@@ -7,6 +8,11 @@
   color: rgb(255, 56, 92);
 }
 
+
+.f-info{
+  padding: 3rem;
+  width: 50%;
+}
 footer a {
   text-decoration: none;
   color: #222222;
@@ -25,9 +31,11 @@ footer .socials i {
 
 footer {
   display: flex;
-  align-items: center;
+  align-items:center;
   justify-content: center;
-  padding-top: 1rem;
+  height: auto;
+  margin-top: 2rem;
+  background-color: #ebebeb;
 }
 
 footer .socials {
