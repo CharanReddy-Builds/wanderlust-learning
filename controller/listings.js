@@ -29,16 +29,28 @@ module.exports.renderEditForm=async (req, res) => {
 
 module.exports.createListing=async (req, res) => {
   let formResponse = req.body;
+  let listing= new Listing(formResponse)
   req.flash("success", "New Listing Created!");
-  formResponse.owner = req.user._id;
-  await Listing.insertOne(formResponse);
+  listing.owner = req.user._id;
+  listing.image.url=req.file.path
+  listing.image.filename=req.path.filename
+  console.log(formResponse)
+  await listing.save();
   res.redirect("/listings");
 }
 
 module.exports.updateListing=async (req, res) => {
   let formResponse = req.body;
   let { id } = req.params;
-  await Listing.updateOne({ _id: id }, formResponse, { runValidators: true });
+  if (req.file) {
+    // user selected a new image
+
+       formResponse.image = {
+      url: req.file.path,
+      filename: req.file.filename,
+    };
+  }
+  await Listing.updateOne({ _id: id }, {$set:formResponse}, { runValidators: true });
   req.flash("success", "Listing Updated!");
   res.redirect(`${id}`);
 }

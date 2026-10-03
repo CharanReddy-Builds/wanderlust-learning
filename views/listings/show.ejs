@@ -12,7 +12,7 @@
     <div class="card show-card mt-4">
 
       <img
-        src="<%= listing.image %>"
+        src="<%= listing.image.url %>"
         class="card-img-top"
         alt="..."
         style="height: 300px; object-fit: cover;"
@@ -98,21 +98,22 @@
       >
 
         <div class="mb-3">
-
           <label for="rating" class="form-label">
             Rating
           </label>
-
-          <input
-            type="range"
-            id="rating"
-            class="form-control form-range"
-            min="1"
-            max="5"
-            step="1"
-            name="rating"
-            required
-          />
+          <fieldset class="starability-checkmark">
+          <input type="radio" id="no-rate" class="input-no-rate" name="rating" value="1" checked aria-label="No rating." />
+          <input type="radio" id="first-rate1" name="rating" value="1" />
+          <label for="first-rate1" title="Terrible">1 star</label>
+          <input type="radio" id="first-rate2" name="rating" value="2" />
+          <label for="first-rate2" title="Not good">2 stars</label>
+          <input type="radio" id="first-rate3" name="rating" value="3" />
+          <label for="first-rate3" title="Average">3 stars</label>
+          <input type="radio" id="first-rate4" name="rating" value="4" />
+          <label for="first-rate4" title="Very good">4 stars</label>
+          <input type="radio" id="first-rate5" name="rating" value="5" />
+          <label for="first-rate5" title="Amazing">5 stars</label>
+        </fieldset>
 
           <div class="valid-feedback">
             Looks good!
@@ -207,15 +208,15 @@
             </h5>
 
             <div class="card-body">
+                  <p class="starability-result card-text" data-rating="<%= review.rating %>">
+                        Rated: 3 stars
+                  </p>
 
-              <p class="card-text">
-                <%= review.comment %>
-              </p>
+                  <p class="card-text">
+                    <%= review.comment %>
+                  </p>
 
-              <p class="card-text">
-                <b>Rating:</b>
-                <%= review.rating %>
-              </p>
+              
 
               <% if(currUser&&currUser._id.equals(review.author._id)){ %>
               <form

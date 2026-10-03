@@ -4,20 +4,34 @@ const Listing = require("../models/listing");
 const ExpressError = require("../ExpressError.js");
 const { isLoggedin, isOwner, validateListing } = require("../middleware.js");
 const { populate } = require("../models/review.js");
-const { renderIndex,rendernewListingForm, renderListing, renderEditForm, createListing, updateListing, deleteListing } = require("../controllers/listings.js");
 
-router.get("/",renderIndex);
+const multer = require("multer");
+const { storage } = require("../cloudConfig.js");
+const upload = multer({ storage });
+const {
+  renderIndex,
+  rendernewListingForm,
+  renderListing,
+  renderEditForm,
+  createListing,
+  updateListing,
+  deleteListing,
+} = require("../controller/listings.js");
 
-router.get("/new", isLoggedin,rendernewListingForm);
+router
+  .route("/")
+  .get(renderIndex)
+  .post(isLoggedin, upload.single("image"), createListing);
 
-router.get("/:id",renderListing);
+router.get("/new", isLoggedin, rendernewListingForm);
 
-router.get("/:id/edit", isLoggedin, isOwner,renderEditForm);
+router
+  .route("/:id")
+  .get(renderListing)
+  .patch(isLoggedin, isOwner,upload.single("image"),updateListing) //already have a validator in controller
+  .delete(isLoggedin, isOwner, deleteListing);
 
-router.post("/", isLoggedin, validateListing,createListing);
 
-router.patch("/:id", isLoggedin, isOwner, validateListing,updateListing);
-
-router.delete("/:id", isLoggedin, isOwner,deleteListing);
+router.get("/:id/edit", isLoggedin, isOwner, renderEditForm);
 
 module.exports = router;

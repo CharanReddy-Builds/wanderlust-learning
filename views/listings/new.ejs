@@ -11,7 +11,7 @@
       action="/listings"
       method="post"
       class="needs-validation"
-      novalidate
+      novalidate enctype="multipart/form-data"
     >
 
       <!-- Title -->
@@ -62,13 +62,35 @@
 
 
       <!-- Image -->
-      <div class="mb-3">
+      <!-- <div class="mb-3">
         <label for="image" class="form-label">
           Image URL:
         </label>
 
         <input
           type="text"
+          name="image"
+          id="image"
+          placeholder="Enter url/link"
+          class="form-control"
+        />
+
+        <div class="valid-feedback">
+          Looks good!
+        </div>
+
+        <div class="invalid-feedback">
+          Enter a valid url.
+        </div>
+      </div> -->
+      
+      <div class="mb-3">
+        <label for="image" class="form-label">
+          Upload image:
+        </label>
+
+        <input
+          type="file"
           name="image"
           id="image"
           placeholder="Enter url/link"
