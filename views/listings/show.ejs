@@ -1,5 +1,12 @@
 <% layout('/layouts/boilerplate') %>
 
+
+<script>
+  const map_Key= "<%=mapKey%>"
+  console.log(map_Key);
+  const mapCoordinates="<%=coordinates%>"
+  const locationName="<%=listing.location%>"
+</script>
 <body>
   <div class="container mt-5">
 
@@ -190,7 +197,8 @@
 <!-- All reviews -->
 <div class="row">
   <div class="col-lg-8 col-md-10 col-12 mx-auto">
-
+      <% if (listing.reviews.length>0) { %>
+       
     <h4 class="mb-3">
       All reviews
     </h4>
@@ -239,9 +247,21 @@
 
     </div>
 
-  </div>
-</div>
+      </div>
+    </div>
 
 
   </div>
+   <% } %>
+   <br> <br>
+
+  <div class="row">
+    <div class="col-lg-6 col-md-8 col-12 mx-auto">
+      <h4 class="mb-3">Where You will be</h4>
+      <div id="map"></div>
+    </div>
+
+  </div>
+   <script src="https://api.mapbox.com/mapbox-gl-js/v3.30.0/mapbox-gl.js"></script>
+  <script src="/js/map.js"></script>
 </body>

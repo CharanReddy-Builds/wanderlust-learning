@@ -9,7 +9,12 @@ const sampleListings = [
     price: 2400,
     location: "Rishikesh",
     country: "India",
+    geometry: {
+      type: "Point",
+      coordinates: [78.2676, 30.0869],
+    },
   },
+
   {
     title: "Hilltop Cabin",
     description:
@@ -21,7 +26,12 @@ const sampleListings = [
     price: 2900,
     location: "Shimla",
     country: "India",
+    geometry: {
+      type: "Point",
+      coordinates: [77.1734, 31.1048],
+    },
   },
+
   {
     title: "Coastal Escape",
     description:
@@ -33,7 +43,12 @@ const sampleListings = [
     price: 2100,
     location: "Pondicherry",
     country: "India",
+    geometry: {
+      type: "Point",
+      coordinates: [79.8083, 11.9416],
+    },
   },
+
   {
     title: "Tea Garden Retreat",
     description:
@@ -45,7 +60,12 @@ const sampleListings = [
     price: 2600,
     location: "Munnar",
     country: "India",
+    geometry: {
+      type: "Point",
+      coordinates: [77.0595, 10.0889],
+    },
   },
+
   {
     title: "Jungle Safari",
     description:
@@ -57,7 +77,12 @@ const sampleListings = [
     price: 3800,
     location: "Ranthambore",
     country: "India",
+    geometry: {
+      type: "Point",
+      coordinates: [76.5026, 26.0173],
+    },
   },
+
   {
     title: "Island Paradise",
     description:
@@ -69,7 +94,12 @@ const sampleListings = [
     price: 5200,
     location: "Andaman",
     country: "India",
+    geometry: {
+      type: "Point",
+      coordinates: [92.7265, 11.6234],
+    },
   },
+
   {
     title: "Heritage Haveli",
     description:
@@ -81,7 +111,12 @@ const sampleListings = [
     price: 3300,
     location: "Jodhpur",
     country: "India",
+    geometry: {
+      type: "Point",
+      coordinates: [73.0243, 26.2389],
+    },
   },
+
   {
     title: "Waterfall Hideaway",
     description:
@@ -93,7 +128,12 @@ const sampleListings = [
     price: 2300,
     location: "Wayanad",
     country: "India",
+    geometry: {
+      type: "Point",
+      coordinates: [76.132, 11.6854],
+    },
   },
+
   {
     title: "Snow Mountain Lodge",
     description:
@@ -105,7 +145,12 @@ const sampleListings = [
     price: 4100,
     location: "Manali",
     country: "India",
+    geometry: {
+      type: "Point",
+      coordinates: [77.1887, 32.2396],
+    },
   },
+
   {
     title: "Lake House",
     description: "A beautiful house overlooking a peaceful lake and mountains.",
@@ -116,7 +161,12 @@ const sampleListings = [
     price: 3100,
     location: "Nainital",
     country: "India",
+    geometry: {
+      type: "Point",
+      coordinates: [79.4636, 29.3919],
+    },
   },
+
   {
     title: "Countryside Villa",
     description: "Escape the busy city and relax in a quiet countryside villa.",
@@ -127,7 +177,12 @@ const sampleListings = [
     price: 3600,
     location: "Lonavala",
     country: "India",
+    geometry: {
+      type: "Point",
+      coordinates: [73.4057, 18.7546],
+    },
   },
+
   {
     title: "Golden Desert Camp",
     description:
@@ -139,7 +194,12 @@ const sampleListings = [
     price: 2800,
     location: "Jaisalmer",
     country: "India",
+    geometry: {
+      type: "Point",
+      coordinates: [70.9167, 26.9157],
+    },
   },
+
   {
     title: "Cliffside Retreat",
     description: "A spectacular stay on a cliff overlooking the ocean.",
@@ -150,7 +210,12 @@ const sampleListings = [
     price: 4700,
     location: "Varkala",
     country: "India",
+    geometry: {
+      type: "Point",
+      coordinates: [76.7163, 8.7379],
+    },
   },
+
   {
     title: "Mountain Village",
     description:
@@ -162,17 +227,28 @@ const sampleListings = [
     price: 1900,
     location: "Kasol",
     country: "India",
+    geometry: {
+      type: "Point",
+      coordinates: [77.3151, 32.0097],
+    },
   },
+
   {
     title: "Forest Cottage",
     description:
-      "Stay in a cha rming cottage surrounded by tall trees and wildlife.",
+      "Stay in a charming cottage surrounded by tall trees and wildlife.",
     image: {
       url: "https://res.cloudinary.com/yogrqmvt/image/upload/v1790960177/wanderlust_dev/evtnpbde4kqgppkoosfv.jpg",
       filename: "wanderlust_dev/evtnpbde4kqgppkoosfv",
     },
+    price: 2500,
     location: "Ooty",
     country: "India",
+    geometry: {
+      type: "Point",
+      coordinates: [76.6932, 11.4102],
+    },
   },
 ];
+
 module.exports = { data: sampleListings };

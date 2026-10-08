@@ -33,7 +33,17 @@ const listSchema = mongoose.Schema({
     type: mongoose.ObjectId,
     ref: "User",
   },
-});
+  geometry: {
+    type: {
+      type: String, // Don't do `{ location: { type: String } }`
+      enum: ['Point'], // 'location.type' must be 'Point'
+      required: true
+    },
+    coordinates: {
+      type: [Number],
+      required: true
+    }
+}});
 
 listSchema.post("findOneAndDelete", async (listing) => {
   if (listing) {

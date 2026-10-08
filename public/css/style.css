@@ -96,3 +96,9 @@ input[type="range"]{
   border: none;
 }
 
+/* map */
+
+#map{
+  height: 400px;
+  width: 400px;
+}
