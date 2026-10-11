@@ -82,18 +82,6 @@ app.use((req, res, next) => {
   next();
 });
 
-app.get("/", (req, res) => {
-  res.send("working");
-});
-
-app.get("/demouser", async (req, res) => {
-  let fakeUser = new User({
-    email: "example@gmail.com",
-    username: "demo-user",
-  });
-  let userResponse = await User.register(fakeUser, "mypassword");
-  res.send(userResponse);
-});
 
 app.use("/listings", listingRouter);
 
