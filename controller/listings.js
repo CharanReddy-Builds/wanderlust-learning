@@ -38,6 +38,7 @@ module.exports.renderEditForm=async (req, res) => {
 
 module.exports.createListing=async (req, res) => {
   let formResponse = req.body;
+  console.log(formResponse)
   let listing= new Listing(formResponse)
   req.flash("success", "New Listing Created!");
   listing.owner = req.user._id;
@@ -96,4 +97,12 @@ module.exports.deleteListing=async (req, res) => {
   await Listing.findOneAndDelete({ _id: id });
   req.flash("success", "Listing Deleted!");
   res.redirect("/listings");
+}
+
+//category wise
+
+module.exports.rendercategoryIndex=async (req,res)=>{
+      let{categoryName}=req.params; 
+      let listings = await Listing.find({category:categoryName});
+      res.render("listings/category.ejs", { listings });
 }

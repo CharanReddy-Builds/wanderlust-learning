@@ -16,6 +16,7 @@ const {
   createListing,
   updateListing,
   deleteListing,
+  rendercategoryIndex
 } = require("../controller/listings.js");
 
 router
@@ -24,6 +25,10 @@ router
   .post(isLoggedin, upload.single("image"), createListing);
 
 router.get("/new", isLoggedin, rendernewListingForm);
+
+
+router.route("/category/:categoryName")
+.get(rendercategoryIndex)
 
 router
   .route("/:id")

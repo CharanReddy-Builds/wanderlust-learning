@@ -1,4 +1,4 @@
-if(process.env.NODE_ENV!="production"){
+if (process.env.NODE_ENV != "production") {
   require("dotenv").config();
 }
 
@@ -6,32 +6,42 @@ if(process.env.NODE_ENV!="production"){
 
 const express = require("express");
 const app = express();
-const mongoose = require("mongoose");
-const Listing = require("./models/listing.js");
 const path = require("path");
 const port = 8080;
 const methodOverride = require("method-override");
 const ejsMate = require("ejs-mate");
-const ExpressError = require("./ExpressError.js");
-const { listingSchema, reviewSchema } = require("./schema.js");
-const Review = require("./models/review.js");
 const connectDB = require("./db.js");
 const listingRouter = require("./routes/listing.js");
 const reviewRouter = require("./routes/review.js");
 const userRouter = require("./routes/user.js");
 const session = require("express-session");
+const MongoStore = require("connect-mongo").default;
 const flash = require("connect-flash");
 const passport = require("passport");
 const User = require("./models/user.js");
 const LocalStrategy = require("passport-local");
 
+const dbUrl = process.env.ATLAS_URL;
+
+console.log(MongoStore);
+console.log(typeof MongoStore.create);
+
+const store = MongoStore.create({
+  mongoUrl: dbUrl,
+  touchAfter: 24 * 3600,
+  crypto: {
+    secret: process.env.SECRET,
+  },
+});
+
 const sessionOptions = {
-  secret: "keyboard cat",
+  store,
+  secret: process.env.SECRET,
   resave: false,
-  saveUninitialized: true,
+  saveUninitialized: false,
   cookie: {
-    expires: Date.now() + 7 * 24 * 60 * 1000,
-    maxAge: 7 * 24 * 60 * 1000,
+    expires: Date.now() + 7 * 24 * 60 * 60 * 1000,
+    maxAge: 7 * 24 * 60 * 60 * 1000,
     httpOnly: true,
   },
 };
@@ -93,10 +103,10 @@ app.use("/listings/:id/reviews", reviewRouter);
 
 app.use("/", userRouter);
 
-// app.use((err, req, res, next) => {
-//   let { status, message } = err;
-//   res.status(status || 500).render("listings/error.ejs", { err });
-// });
+app.use((err, req, res, next) => {
+  let { status, message } = err;
+  res.status(status || 500).render("listings/error.ejs", { err });
+});
 
 async function startServer() {
   try {

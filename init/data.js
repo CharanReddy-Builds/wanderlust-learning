@@ -13,8 +13,8 @@ const sampleListings = [
       type: "Point",
       coordinates: [78.2676, 30.0869],
     },
+    category: "Mountains",
   },
-
   {
     title: "Hilltop Cabin",
     description:
@@ -30,6 +30,7 @@ const sampleListings = [
       type: "Point",
       coordinates: [77.1734, 31.1048],
     },
+    category: "Mountains",
   },
 
   {
@@ -47,6 +48,7 @@ const sampleListings = [
       type: "Point",
       coordinates: [79.8083, 11.9416],
     },
+    category: "Beaches",
   },
 
   {
@@ -64,6 +66,7 @@ const sampleListings = [
       type: "Point",
       coordinates: [77.0595, 10.0889],
     },
+    category: "Farms",
   },
 
   {
@@ -81,6 +84,7 @@ const sampleListings = [
       type: "Point",
       coordinates: [76.5026, 26.0173],
     },
+    category: "Trending",
   },
 
   {
@@ -98,6 +102,7 @@ const sampleListings = [
       type: "Point",
       coordinates: [92.7265, 11.6234],
     },
+    category: "Beaches",
   },
 
   {
@@ -115,6 +120,7 @@ const sampleListings = [
       type: "Point",
       coordinates: [73.0243, 26.2389],
     },
+    category: "Trending",
   },
 
   {
@@ -132,6 +138,7 @@ const sampleListings = [
       type: "Point",
       coordinates: [76.132, 11.6854],
     },
+    category: "Mountains",
   },
 
   {
@@ -149,6 +156,7 @@ const sampleListings = [
       type: "Point",
       coordinates: [77.1887, 32.2396],
     },
+    category: "Mountains",
   },
 
   {
@@ -165,6 +173,7 @@ const sampleListings = [
       type: "Point",
       coordinates: [79.4636, 29.3919],
     },
+    category: "Mountains",
   },
 
   {
@@ -181,6 +190,7 @@ const sampleListings = [
       type: "Point",
       coordinates: [73.4057, 18.7546],
     },
+    category: "Farms",
   },
 
   {
@@ -198,6 +208,7 @@ const sampleListings = [
       type: "Point",
       coordinates: [70.9167, 26.9157],
     },
+    category: "Trending",
   },
 
   {
@@ -214,6 +225,7 @@ const sampleListings = [
       type: "Point",
       coordinates: [76.7163, 8.7379],
     },
+    category: "Beaches",
   },
 
   {
@@ -231,6 +243,7 @@ const sampleListings = [
       type: "Point",
       coordinates: [77.3151, 32.0097],
     },
+    category: "Mountains",
   },
 
   {
@@ -248,6 +261,42 @@ const sampleListings = [
       type: "Point",
       coordinates: [76.6932, 11.4102],
     },
+    category: "Farms",
+  },
+  {
+    title: "Arctic Glass Igloo",
+    description:
+      "Stay in a cozy glass igloo and admire the Northern Lights across the snowy Arctic wilderness.",
+    image: {
+      url: "https://res.cloudinary.com/yogrqmvt/image/upload/v1790960177/wanderlust_dev/evtnpbde4kqgppkoosfv.jpg",
+      filename: "wanderlust_dev/evtnpbde4kqgppkoosfv",
+    },
+    price: 8500,
+    location: "Rovaniemi",
+    country: "Finland",
+    geometry: {
+      type: "Point",
+      coordinates: [25.7294, 66.5039],
+    },
+    category: "Arctic",
+  },
+
+  {
+    title: "Cozy City Room",
+    description:
+      "Enjoy a comfortable private room with modern amenities, perfect for exploring the city.",
+    image: {
+      url: "https://res.cloudinary.com/yogrqmvt/image/upload/v1790960177/wanderlust_dev/evtnpbde4kqgppkoosfv.jpg",
+      filename: "wanderlust_dev/evtnpbde4kqgppkoosfv",
+    },
+    price: 1800,
+    location: "Bengaluru",
+    country: "India",
+    geometry: {
+      type: "Point",
+      coordinates: [77.5946, 12.9716],
+    },
+    category: "Rooms",
   },
 ];
 
